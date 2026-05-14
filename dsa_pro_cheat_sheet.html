@@ -1,0 +1,524 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent}
+.nb{font-family:'Kalam',cursive;background:transparent;padding:1rem 0.5rem 2rem}
+.cover{text-align:center;padding:1.5rem 1rem;border:3px solid #1a1a2e;border-radius:8px;background:#fffde7;margin-bottom:1.5rem;position:relative}
+.cover h1{font-family:'Caveat',cursive;font-size:2.2rem;font-weight:700;color:#1a1a2e;line-height:1.2}
+.cover .sub{font-size:1rem;color:#555;margin-top:6px}
+.cover .stamp{display:inline-block;border:2.5px solid #d32f2f;color:#d32f2f;padding:2px 10px;border-radius:4px;font-size:0.85rem;margin-top:8px;transform:rotate(-2deg);font-weight:700}
+.toc{background:#e8f5e9;border:2px dashed #388e3c;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1.5rem}
+.toc h2{font-family:'Caveat',cursive;font-size:1.4rem;color:#1b5e20;margin-bottom:8px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+.toc-item{font-size:0.85rem;color:#2e7d32;padding:1px 0}
+.toc-item span{color:#888;font-size:0.78rem}
+.section{margin-bottom:1.5rem;border-radius:8px;overflow:hidden;border:2px solid}
+.sec-head{padding:0.6rem 1rem;display:flex;align-items:center;gap:8px}
+.sec-head h2{font-family:'Caveat',cursive;font-size:1.3rem;font-weight:700}
+.sec-num{font-family:'Caveat',cursive;font-size:1.1rem;font-weight:700;background:rgba(255,255,255,0.35);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-body{padding:0.8rem 1rem;background:#fffde7}
+.rule{font-size:0.88rem;color:#222;padding:4px 0;border-bottom:1px dashed #ccc;line-height:1.5}
+.rule:last-child{border-bottom:none}
+.rule b{font-weight:700;font-family:'Caveat',cursive;font-size:0.98rem}
+.tag{display:inline-block;font-size:0.72rem;background:#ffecb3;border:1px solid #ffa000;border-radius:10px;padding:1px 7px;margin-left:4px;color:#e65100;font-family:'Kalam',cursive}
+.tag.g{background:#e8f5e9;border-color:#388e3c;color:#1b5e20}
+.tag.b{background:#e3f2fd;border-color:#1976d2;color:#0d47a1}
+.tag.r{background:#fce4ec;border-color:#e91e63;color:#880e4f}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.mini-card{background:rgba(255,255,255,0.6);border-radius:6px;border:1px solid rgba(0,0,0,0.12);padding:6px 8px}
+.mini-card h4{font-family:'Caveat',cursive;font-size:0.95rem;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+.mini-card p{font-size:0.78rem;color:#333;line-height:1.4}
+.code{background:#1e1e2e;color:#cdd6f4;font-family:monospace;font-size:0.72rem;border-radius:6px;padding:6px 8px;margin:6px 0;line-height:1.5;font-style:normal;overflow-x:auto}
+.code .kw{color:#cba6f7}
+.code .fn{color:#89b4fa}
+.code .cm{color:#6c7086}
+.code .st{color:#a6e3a1}
+.code .num{color:#fab387}
+.arrow{color:#f57f17;font-weight:700}
+.warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:4px 8px;border-radius:0 6px 6px 0;font-size:0.8rem;color:#bf360c;margin:4px 0}
+.tip{background:#e0f7fa;border-left:3px solid #0097a7;padding:4px 8px;border-radius:0 6px 6px 0;font-size:0.8rem;color:#006064;margin:4px 0}
+.complexity-row{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.comp{background:rgba(255,255,255,0.7);border-radius:20px;border:1px solid rgba(0,0,0,0.15);padding:2px 10px;font-size:0.75rem;font-family:'Kalam',cursive}
+.comp.good{border-color:#388e3c;color:#1b5e20;background:#e8f5e9}
+.comp.ok{border-color:#f57c00;color:#e65100;background:#fff3e0}
+.comp.bad{border-color:#c62828;color:#b71c1c;background:#fce4ec}
+.pattern-box{border:1.5px dashed;border-radius:8px;padding:8px 10px;margin:6px 0;font-size:0.82rem}
+.underline{text-decoration:underline;text-decoration-style:wavy}
+.step{display:flex;gap:6px;align-items:flex-start;padding:3px 0}
+.step-num{background:#1a1a2e;color:#fff;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;flex-shrink:0;margin-top:2px;font-family:monospace}
+.step-txt{font-size:0.82rem;color:#222;line-height:1.4}
+.divider{border:none;border-top:2px dashed #bbb;margin:10px 0}
+.mega-table{width:100%;font-size:0.75rem;border-collapse:collapse;margin-top:8px}
+.mega-table th{background:#1a1a2e;color:#fff;padding:5px 6px;text-align:left;font-family:'Caveat',cursive;font-size:0.85rem}
+.mega-table td{padding:4px 6px;border-bottom:1px dashed #ddd;vertical-align:top}
+.mega-table tr:nth-child(even){background:rgba(255,255,255,0.5)}
+.keyword-cloud{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.kw-pill{background:#e8eaf6;border:1px solid #5c6bc0;border-radius:20px;padding:2px 8px;font-size:0.72rem;color:#283593;font-family:'Kalam',cursive}
+.s1{border-color:#5c6bc0;} .s1 .sec-head{background:#e8eaf6;color:#1a237e}
+.s2{border-color:#00897b;} .s2 .sec-head{background:#e0f2f1;color:#004d40}
+.s3{border-color:#f57c00;} .s3 .sec-head{background:#fff3e0;color:#e65100}
+.s4{border-color:#8e24aa;} .s4 .sec-head{background:#f3e5f5;color:#4a148c}
+.s5{border-color:#1e88e5;} .s5 .sec-head{background:#e3f2fd;color:#0d47a1}
+.s6{border-color:#d81b60;} .s6 .sec-head{background:#fce4ec;color:#880e4f}
+.s7{border-color:#43a047;} .s7 .sec-head{background:#e8f5e9;color:#1b5e20}
+.s8{border-color:#6d4c41;} .s8 .sec-head{background:#efebe9;color:#3e2723}
+.s9{border-color:#546e7a;} .s9 .sec-head{background:#eceff1;color:#263238}
+.s10{border-color:#c0ca33;} .s10 .sec-head{background:#f9fbe7;color:#827717}
+.footer{text-align:center;font-family:'Caveat',cursive;font-size:1rem;color:#888;margin-top:1rem;padding:0.5rem}
+</style>
+<div class="nb">
+<h2 class="sr-only">DSA Pro Cheat Sheet — All major patterns, complexities, templates, and recognition rules in handwritten style</h2>
+
+<div class="cover">
+  <div style="font-size:2.5rem;margin-bottom:4px">📓</div>
+  <h1>DSA Pro Cheat Sheet</h1>
+  <div class="sub">Patterns · Templates · Tricks · Complexities</div>
+  <div class="sub" style="margin-top:4px;font-size:0.8rem;color:#888">By your Elite DSA Mentor 🧠</div>
+  <div class="stamp">TOP SECRET — INTERVIEW EDITION</div>
+</div>
+
+<div class="toc">
+  <h2>📋 Table of Contents</h2>
+  <div class="toc-grid">
+    <div class="toc-item">1. Arrays &amp; Sliding Window <span>→ p1</span></div>
+    <div class="toc-item">2. Two Pointer <span>→ p2</span></div>
+    <div class="toc-item">3. Binary Search <span>→ p3</span></div>
+    <div class="toc-item">4. Prefix Sum &amp; Hashing <span>→ p4</span></div>
+    <div class="toc-item">5. Linked List Tricks <span>→ p5</span></div>
+    <div class="toc-item">6. Stack &amp; Queue <span>→ p6</span></div>
+    <div class="toc-item">7. Trees &amp; BFS/DFS <span>→ p7</span></div>
+    <div class="toc-item">8. Graphs <span>→ p8</span></div>
+    <div class="toc-item">9. Dynamic Programming <span>→ p9</span></div>
+    <div class="toc-item">10. Heap &amp; Greedy <span>→ p10</span></div>
+    <div class="toc-item">11. Backtracking <span>→ p11</span></div>
+    <div class="toc-item">12. Trie &amp; Union Find <span>→ p12</span></div>
+  </div>
+</div>
+
+<div class="section s1">
+  <div class="sec-head"><span class="sec-num">1</span><h2>🪟 Sliding Window</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: subarray/substring + condition on a window of elements</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">max subarray</span><span class="kw-pill">min window</span><span class="kw-pill">longest substring</span><span class="kw-pill">k-size window</span><span class="kw-pill">contiguous</span>
+    </div>
+    <hr class="divider">
+    <b style="font-family:'Caveat',cursive;font-size:1rem">Fixed Window:</b>
+    <div class="step"><span class="step-num">1</span><div class="step-txt">Build first window of size k</div></div>
+    <div class="step"><span class="step-num">2</span><div class="step-txt">Slide: add right element, remove left element</div></div>
+    <div class="step"><span class="step-num">3</span><div class="step-txt">Track result at each valid window</div></div>
+    <div class="code"><span class="kw">left</span> = 0; result = 0; window_sum = 0
+<span class="kw">for</span> right <span class="kw">in</span> range(n):
+    window_sum += arr[right]
+    <span class="kw">if</span> right >= k-<span class="num">1</span>:
+        result = max(result, window_sum)
+        window_sum -= arr[left]; left++</div>
+    <b style="font-family:'Caveat',cursive;font-size:1rem">Variable Window:</b>
+    <div class="step"><span class="step-num">1</span><div class="step-txt">Expand right until condition is violated</div></div>
+    <div class="step"><span class="step-num">2</span><div class="step-txt">Shrink left until condition is valid again</div></div>
+    <div class="step"><span class="step-num">3</span><div class="step-txt">Update answer at every valid window</div></div>
+    <div class="complexity-row">
+      <span class="comp good">Time: O(n)</span>
+      <span class="comp good">Space: O(1) or O(k)</span>
+    </div>
+    <div class="warn">⚠ Mistake: moving left more than 1 step at a time in variable window</div>
+  </div>
+</div>
+
+<div class="section s2">
+  <div class="sec-head"><span class="sec-num">2</span><h2>👉👈 Two Pointer</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: sorted array + pair/triplet condition, or palindrome check</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">two sum sorted</span><span class="kw-pill">3sum</span><span class="kw-pill">palindrome</span><span class="kw-pill">container water</span><span class="kw-pill">remove duplicates</span>
+    </div>
+    <hr class="divider">
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>Opposite Ends</h4>
+        <p>left=0, right=n-1<br>Move based on condition<br>Used in: pair sum, container</p>
+      </div>
+      <div class="mini-card">
+        <h4>Same Direction</h4>
+        <p>slow &amp; fast pointer<br>slow writes, fast reads<br>Used in: remove dups, merge</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># Two Sum in sorted array</span>
+l, r = <span class="num">0</span>, n-<span class="num">1</span>
+<span class="kw">while</span> l &lt; r:
+    s = arr[l] + arr[r]
+    <span class="kw">if</span> s == target: <span class="kw">return</span> [l,r]
+    <span class="kw">elif</span> s &lt; target: l++
+    <span class="kw">else</span>: r--</div>
+    <div class="complexity-row">
+      <span class="comp good">Time: O(n)</span>
+      <span class="comp good">Space: O(1)</span>
+    </div>
+    <div class="warn">⚠ Only works on SORTED arrays (for opposite-end variant)</div>
+  </div>
+</div>
+
+<div class="section s3">
+  <div class="sec-head"><span class="sec-num">3</span><h2>🔍 Binary Search</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: sorted data OR monotonic function (if X works, X+1 also works)</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">sorted array</span><span class="kw-pill">find minimum</span><span class="kw-pill">first/last position</span><span class="kw-pill">search space</span><span class="kw-pill">rotated</span>
+    </div>
+    <hr class="divider">
+    <div class="step"><span class="step-num">1</span><div class="step-txt">Define: lo, hi, mid = lo+(hi-lo)//2</div></div>
+    <div class="step"><span class="step-num">2</span><div class="step-txt">Ask: is mid a valid answer? shrink accordingly</div></div>
+    <div class="step"><span class="step-num">3</span><div class="step-txt">Always exit with lo == hi (the answer)</div></div>
+    <div class="code"><span class="kw">while</span> lo &lt; hi:
+    mid = lo + (hi - lo) // <span class="num">2</span>
+    <span class="kw">if</span> feasible(mid):
+        hi = mid      <span class="cm"># search left</span>
+    <span class="kw">else</span>:
+        lo = mid + <span class="num">1</span>  <span class="cm"># search right</span>
+<span class="kw">return</span> lo</div>
+    <b style="font-family:'Caveat',cursive;font-size:0.95rem">Binary Search on Answer Template:</b>
+    <div class="pattern-box" style="border-color:#00897b;font-size:0.8rem">
+      "Find minimum X such that condition(X) is True"<br>
+      → lo = min_possible, hi = max_possible<br>
+      → if condition(mid): hi=mid else: lo=mid+1
+    </div>
+    <div class="complexity-row">
+      <span class="comp good">Time: O(log n)</span>
+      <span class="comp good">Space: O(1)</span>
+    </div>
+    <div class="warn">⚠ mid overflow: use lo + (hi-lo)//2, NOT (lo+hi)//2</div>
+  </div>
+</div>
+
+<div class="section s4">
+  <div class="sec-head"><span class="sec-num">4</span><h2>➕ Prefix Sum &amp; Hashing</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: subarray sum, frequency count, seen-before lookups</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">subarray sum = k</span><span class="kw-pill">range query</span><span class="kw-pill">count pairs</span><span class="kw-pill">anagram</span><span class="kw-pill">two sum</span>
+    </div>
+    <hr class="divider">
+    <b style="font-family:'Caveat',cursive;font-size:0.95rem">Prefix Sum:</b>
+    <div class="code">prefix[<span class="num">0</span>] = <span class="num">0</span>
+<span class="kw">for</span> i <span class="kw">in</span> range(n):
+    prefix[i+<span class="num">1</span>] = prefix[i] + arr[i]
+<span class="cm"># sum(i,j) = prefix[j+1] - prefix[i]</span></div>
+    <b style="font-family:'Caveat',cursive;font-size:0.95rem">HashMap pattern (subarray sum = k):</b>
+    <div class="code">seen = {<span class="num">0</span>:<span class="num">1</span>}; total=count=<span class="num">0</span>
+<span class="kw">for</span> x <span class="kw">in</span> arr:
+    total += x
+    count += seen.get(total-k, <span class="num">0</span>)
+    seen[total] = seen.get(total,<span class="num">0</span>)+<span class="num">1</span></div>
+    <div class="complexity-row">
+      <span class="comp good">Time: O(n)</span><span class="comp good">Space: O(n)</span>
+    </div>
+    <div class="warn">⚠ Initialize seen={0:1} — the empty subarray has sum 0</div>
+  </div>
+</div>
+
+<div class="section s4" style="border-color:#6d4c41;">
+  <div class="sec-head" style="background:#efebe9;color:#3e2723"><span class="sec-num" style="background:#3e2723">5</span><h2>🔗 Linked List Tricks</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use dummy node always — prevents null pointer edge cases!</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>Fast &amp; Slow (Floyd)</h4>
+        <p>slow moves 1, fast moves 2<br>Meet = cycle exists<br>Find middle, find cycle start</p>
+      </div>
+      <div class="mini-card">
+        <h4>Dummy Node</h4>
+        <p>dummy → head<br>Never lose the head!<br>return dummy.next</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># Find middle</span>
+slow = fast = head
+<span class="kw">while</span> fast <span class="kw">and</span> fast.next:
+    slow = slow.next
+    fast = fast.next.next
+<span class="cm"># slow is now middle</span></div>
+    <b style="font-family:'Caveat',cursive;font-size:0.95rem">Reverse Linked List:</b>
+    <div class="code">prev, cur = <span class="kw">None</span>, head
+<span class="kw">while</span> cur:
+    nxt = cur.next
+    cur.next = prev
+    prev = cur; cur = nxt
+<span class="kw">return</span> prev</div>
+    <div class="complexity-row"><span class="comp good">Time: O(n)</span><span class="comp good">Space: O(1)</span></div>
+  </div>
+</div>
+
+<div class="section s6">
+  <div class="sec-head"><span class="sec-num">6</span><h2>📚 Stack &amp; Monotonic Stack</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: next greater/smaller element, valid parentheses, histogram</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">next greater</span><span class="kw-pill">next smaller</span><span class="kw-pill">brackets</span><span class="kw-pill">histogram</span><span class="kw-pill">daily temps</span><span class="kw-pill">stock span</span>
+    </div>
+    <hr class="divider">
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>Mono Increasing</h4>
+        <p>Pop when: current &lt; top<br>→ Next Smaller Element<br>Stack stays increasing ↑</p>
+      </div>
+      <div class="mini-card">
+        <h4>Mono Decreasing</h4>
+        <p>Pop when: current &gt; top<br>→ Next Greater Element<br>Stack stays decreasing ↓</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># Next Greater Element</span>
+st, res = [], [-<span class="num">1</span>]*n
+<span class="kw">for</span> i, v <span class="kw">in</span> enumerate(arr):
+    <span class="kw">while</span> st <span class="kw">and</span> arr[st[-<span class="num">1</span>]] &lt; v:
+        res[st.pop()] = v
+    st.append(i)</div>
+    <div class="warn">⚠ Stack stores INDICES not values (most of the time)</div>
+    <div class="complexity-row"><span class="comp good">Time: O(n)</span><span class="comp good">Space: O(n)</span></div>
+  </div>
+</div>
+
+<div class="section s7">
+  <div class="sec-head"><span class="sec-num">7</span><h2>🌳 Trees: BFS &amp; DFS</h2></div>
+  <div class="sec-body">
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>BFS — Level Order</h4>
+        <p>Use queue (deque)<br>Process level by level<br>Shortest path in unweighted</p>
+      </div>
+      <div class="mini-card">
+        <h4>DFS — Recursion</h4>
+        <p>Preorder/Inorder/Post<br>Use call stack implicitly<br>Path problems, subtree</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># BFS template</span>
+from collections <span class="kw">import</span> deque
+q = deque([root]); res = []
+<span class="kw">while</span> q:
+    level = []
+    <span class="kw">for</span> _ <span class="kw">in</span> range(len(q)):
+        node = q.popleft()
+        level.append(node.val)
+        <span class="kw">if</span> node.left: q.append(node.left)
+        <span class="kw">if</span> node.right: q.append(node.right)
+    res.append(level)</div>
+    <div class="code"><span class="cm"># DFS tree template</span>
+<span class="kw">def</span> <span class="fn">dfs</span>(node):
+    <span class="kw">if not</span> node: <span class="kw">return</span> <span class="num">0</span>
+    left = dfs(node.left)
+    right = dfs(node.right)
+    <span class="cm"># process current node</span>
+    <span class="kw">return</span> 1 + max(left, right)</div>
+    <div class="tip">BFS = shortest path. DFS = path existence / exhaustive search</div>
+    <div class="complexity-row"><span class="comp good">Time: O(n)</span><span class="comp good">Space: O(h) DFS / O(w) BFS</span></div>
+  </div>
+</div>
+
+<div class="section s5">
+  <div class="sec-head"><span class="sec-num">8</span><h2>🕸 Graphs</h2></div>
+  <div class="sec-body">
+    <div class="keyword-cloud">
+      <span class="kw-pill">shortest path</span><span class="kw-pill">connected components</span><span class="kw-pill">cycle detection</span><span class="kw-pill">topological sort</span><span class="kw-pill">islands</span>
+    </div>
+    <hr class="divider">
+    <table class="mega-table">
+      <tr><th>Algorithm</th><th>Use Case</th><th>Complexity</th></tr>
+      <tr><td>BFS</td><td>Shortest path (unweighted)</td><td>O(V+E)</td></tr>
+      <tr><td>Dijkstra</td><td>Shortest path (weighted, +ve)</td><td>O(E log V)</td></tr>
+      <tr><td>DFS</td><td>Cycle, component, path</td><td>O(V+E)</td></tr>
+      <tr><td>Union Find</td><td>Connected components, MST</td><td>O(α(n))≈O(1)</td></tr>
+      <tr><td>Topo Sort</td><td>Dependency order (DAG)</td><td>O(V+E)</td></tr>
+      <tr><td>Bellman-Ford</td><td>Negative weights</td><td>O(VE)</td></tr>
+    </table>
+    <div class="code"><span class="cm"># DFS on grid (islands)</span>
+<span class="kw">def</span> <span class="fn">dfs</span>(r, c):
+    <span class="kw">if</span> r&lt;<span class="num">0</span> <span class="kw">or</span> r&gt;=rows <span class="kw">or</span> c&lt;<span class="num">0</span> <span class="kw">or</span> c&gt;=cols: <span class="kw">return</span>
+    <span class="kw">if</span> grid[r][c] != <span class="st">'1'</span>: <span class="kw">return</span>
+    grid[r][c] = <span class="st">'#'</span>  <span class="cm"># mark visited</span>
+    <span class="kw">for</span> dr,dc <span class="kw">in</span> [(<span class="num">0</span>,<span class="num">1</span>),(<span class="num">0</span>,-<span class="num">1</span>),(<span class="num">1</span>,<span class="num">0</span>),(-<span class="num">1</span>,<span class="num">0</span>)]:
+        dfs(r+dr, c+dc)</div>
+    <div class="warn">⚠ Always maintain a visited set for general graphs (not trees)</div>
+  </div>
+</div>
+
+<div class="section s8">
+  <div class="sec-head"><span class="sec-num">9</span><h2>🧩 Dynamic Programming</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: optimal substructure + overlapping subproblems</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">max/min ways</span><span class="kw-pill">count paths</span><span class="kw-pill">knapsack</span><span class="kw-pill">subsequence</span><span class="kw-pill">partition</span>
+    </div>
+    <hr class="divider">
+    <b style="font-family:'Caveat',cursive;font-size:1rem">DP Types Cheatsheet:</b>
+    <table class="mega-table">
+      <tr><th>Type</th><th>State</th><th>Famous Problems</th></tr>
+      <tr><td>1D DP</td><td>dp[i]</td><td>Climbing stairs, house robber</td></tr>
+      <tr><td>2D DP</td><td>dp[i][j]</td><td>LCS, Edit distance, Grid paths</td></tr>
+      <tr><td>Knapsack</td><td>dp[i][w]</td><td>0/1 Knapsack, subset sum</td></tr>
+      <tr><td>Interval</td><td>dp[l][r]</td><td>Matrix chain, burst balloons</td></tr>
+      <tr><td>Tree DP</td><td>dp[node]</td><td>Max path sum, house robber III</td></tr>
+      <tr><td>Bitmask</td><td>dp[mask]</td><td>TSP, assignment problem</td></tr>
+    </table>
+    <b style="font-family:'Caveat',cursive;font-size:1rem">The 5-Step DP Framework:</b>
+    <div class="step"><span class="step-num">1</span><div class="step-txt"><b>Define</b> dp[i] clearly in plain English</div></div>
+    <div class="step"><span class="step-num">2</span><div class="step-txt"><b>Base case</b>: smallest input answer</div></div>
+    <div class="step"><span class="step-num">3</span><div class="step-txt"><b>Recurrence</b>: dp[i] = f(dp[i-1], dp[i-2]...)</div></div>
+    <div class="step"><span class="step-num">4</span><div class="step-txt"><b>Order</b>: fill in correct order (usually L→R)</div></div>
+    <div class="step"><span class="step-num">5</span><div class="step-txt"><b>Answer</b>: dp[n] or max(dp)</div></div>
+    <div class="code"><span class="cm"># LCS — 2D DP</span>
+dp = [[<span class="num">0</span>]*(m+<span class="num">1</span>) <span class="kw">for</span> _ <span class="kw">in</span> range(n+<span class="num">1</span>)]
+<span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">1</span>,n+<span class="num">1</span>):
+  <span class="kw">for</span> j <span class="kw">in</span> range(<span class="num">1</span>,m+<span class="num">1</span>):
+    <span class="kw">if</span> s1[i-<span class="num">1</span>]==s2[j-<span class="num">1</span>]: dp[i][j]=dp[i-<span class="num">1</span>][j-<span class="num">1</span>]+<span class="num">1</span>
+    <span class="kw">else</span>: dp[i][j]=max(dp[i-<span class="num">1</span>][j], dp[i][j-<span class="num">1</span>])</div>
+    <div class="warn">⚠ Space optimize: 2D → 1D when only prev row is needed</div>
+    <div class="complexity-row"><span class="comp ok">Time: O(n²) typical</span><span class="comp ok">Space: O(n) optimized</span></div>
+  </div>
+</div>
+
+<div class="section s10">
+  <div class="sec-head"><span class="sec-num">10</span><h2>⛏ Heap &amp; Greedy</h2></div>
+  <div class="sec-body">
+    <div class="tip">Heap: when you repeatedly need min/max. Greedy: locally optimal = globally optimal</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>Min Heap</h4>
+        <p>heapq in Python (default)<br>heappush / heappop<br>Top-K smallest elements</p>
+      </div>
+      <div class="mini-card">
+        <h4>Max Heap</h4>
+        <p>Push negatives in Python<br>heappush(h, -val)<br>Top-K largest elements</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># K largest elements</span>
+<span class="kw">import</span> heapq
+heap = []
+<span class="kw">for</span> x <span class="kw">in</span> nums:
+    heapq.heappush(heap, x)
+    <span class="kw">if</span> len(heap) > k:
+        heapq.heappop(heap)
+<span class="cm"># heap contains k largest</span></div>
+    <b style="font-family:'Caveat',cursive;font-size:0.95rem">Greedy Checklist:</b>
+    <div class="step"><span class="step-num">✓</span><div class="step-txt">Can I make a locally optimal choice at each step?</div></div>
+    <div class="step"><span class="step-num">✓</span><div class="step-txt">Does local optimum always lead to global optimum?</div></div>
+    <div class="step"><span class="step-num">✓</span><div class="step-txt">Famous: interval scheduling, jump game, gas station</div></div>
+    <div class="complexity-row"><span class="comp good">Heap ops: O(log n)</span><span class="comp good">Top-K: O(n log k)</span></div>
+  </div>
+</div>
+
+<div class="section s3">
+  <div class="sec-head"><span class="sec-num">11</span><h2>🔁 Backtracking</h2></div>
+  <div class="sec-body">
+    <div class="tip">Use when: find ALL solutions, explore all paths, permutations/combinations</div>
+    <div class="keyword-cloud">
+      <span class="kw-pill">all combinations</span><span class="kw-pill">permutations</span><span class="kw-pill">subsets</span><span class="kw-pill">N-Queens</span><span class="kw-pill">word search</span><span class="kw-pill">sudoku</span>
+    </div>
+    <hr class="divider">
+    <b style="font-family:'Caveat',cursive;font-size:1rem">Universal Backtracking Template:</b>
+    <div class="code"><span class="kw">def</span> <span class="fn">backtrack</span>(state, choices):
+    <span class="kw">if</span> is_solution(state):
+        result.append(state.copy())
+        <span class="kw">return</span>
+    <span class="kw">for</span> choice <span class="kw">in</span> choices:
+        <span class="kw">if</span> is_valid(choice):
+            make_choice(choice)   <span class="cm"># add</span>
+            backtrack(state, ...)
+            undo_choice(choice)   <span class="cm"># remove ← KEY!</span></div>
+    <div class="pattern-box" style="border-color:#f57c00;background:#fff8e1">
+      <b>3 Questions before backtracking:</b><br>
+      1. What is my choice at each step?<br>
+      2. What is my base case (solution found)?<br>
+      3. What do I undo after recursion?
+    </div>
+    <div class="complexity-row"><span class="comp bad">Time: O(n! or 2ⁿ)</span><span class="comp ok">Space: O(n) stack</span></div>
+  </div>
+</div>
+
+<div class="section s2">
+  <div class="sec-head"><span class="sec-num">12</span><h2>🌐 Trie &amp; Union Find</h2></div>
+  <div class="sec-body">
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>Trie</h4>
+        <p>Word insert/search: O(L)<br>Prefix matching<br>Each node = dict of children</p>
+      </div>
+      <div class="mini-card">
+        <h4>Union Find (DSU)</h4>
+        <p>Group elements together<br>find() with path compression<br>union() by rank</p>
+      </div>
+    </div>
+    <div class="code"><span class="cm"># Trie Node</span>
+<span class="kw">class</span> <span class="fn">Trie</span>:
+  <span class="kw">def</span> <span class="fn">__init__</span>(self):
+    self.children = {}; self.end = <span class="kw">False</span>
+  <span class="kw">def</span> <span class="fn">insert</span>(self, word):
+    cur = self
+    <span class="kw">for</span> c <span class="kw">in</span> word:
+      cur = cur.children.setdefault(c, Trie())
+    cur.end = <span class="kw">True</span></div>
+    <div class="code"><span class="cm"># Union Find</span>
+parent = list(range(n))
+<span class="kw">def</span> <span class="fn">find</span>(x):
+  <span class="kw">if</span> parent[x]!=x: parent[x]=find(parent[x])
+  <span class="kw">return</span> parent[x]
+<span class="kw">def</span> <span class="fn">union</span>(x,y): parent[find(x)] = find(y)</div>
+    <div class="complexity-row"><span class="comp good">Trie: O(L)</span><span class="comp good">DSU: O(α(n)) ≈ O(1)</span></div>
+  </div>
+</div>
+
+<div class="section s9">
+  <div class="sec-head"><span class="sec-num">★</span><h2>🧠 Master Pattern Recognition</h2></div>
+  <div class="sec-body">
+    <table class="mega-table">
+      <tr><th>If you see this...</th><th>Think this pattern</th></tr>
+      <tr><td>subarray / window / contiguous</td><td>Sliding Window</td></tr>
+      <tr><td>sorted array + pair condition</td><td>Two Pointer</td></tr>
+      <tr><td>find min/max that satisfies X</td><td>Binary Search on Answer</td></tr>
+      <tr><td>subarray sum equals k</td><td>Prefix Sum + HashMap</td></tr>
+      <tr><td>next greater / smaller element</td><td>Monotonic Stack</td></tr>
+      <tr><td>shortest path (unweighted)</td><td>BFS</td></tr>
+      <tr><td>all paths / combinations</td><td>DFS / Backtracking</td></tr>
+      <tr><td>optimal substructure + repeat</td><td>Dynamic Programming</td></tr>
+      <tr><td>top K / median stream</td><td>Heap</td></tr>
+      <tr><td>connected components / merge</td><td>Union Find</td></tr>
+      <tr><td>prefix word / autocomplete</td><td>Trie</td></tr>
+      <tr><td>task dependencies / ordering</td><td>Topological Sort</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section s1">
+  <div class="sec-head"><span class="sec-num">⏱</span><h2>⚡ Complexity Quick Reference</h2></div>
+  <div class="sec-body">
+    <table class="mega-table">
+      <tr><th>Structure</th><th>Access</th><th>Search</th><th>Insert</th><th>Delete</th></tr>
+      <tr><td>Array</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td></tr>
+      <tr><td>Linked List</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>HashMap</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>BST</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td></tr>
+      <tr><td>Heap</td><td>O(1) top</td><td>O(n)</td><td>O(log n)</td><td>O(log n)</td></tr>
+      <tr><td>Trie</td><td>O(L)</td><td>O(L)</td><td>O(L)</td><td>O(L)</td></tr>
+    </table>
+    <div style="margin-top:8px;font-size:0.78rem;color:#555">
+      <b style="font-family:'Caveat',cursive">Complexity Hierarchy (best → worst):</b><br>
+      O(1) → O(log n) → O(n) → O(n log n) → O(n²) → O(2ⁿ) → O(n!)
+    </div>
+  </div>
+</div>
+
+<div class="section s6" style="border-color:#d81b60">
+  <div class="sec-head" style="background:#fce4ec;color:#880e4f"><span class="sec-num" style="background:#880e4f">💡</span><h2>Interview Mindset Rules</h2></div>
+  <div class="sec-body">
+    <div class="step"><span class="step-num">1</span><div class="step-txt"><b>Clarify first</b> — ask about constraints, edge cases, input range</div></div>
+    <div class="step"><span class="step-num">2</span><div class="step-txt"><b>Brute force first</b> — say it aloud, then optimize</div></div>
+    <div class="step"><span class="step-num">3</span><div class="step-txt"><b>Think aloud</b> — interviewers grade communication too</div></div>
+    <div class="step"><span class="step-num">4</span><div class="step-txt"><b>Dry run before coding</b> — saves 80% of bugs</div></div>
+    <div class="step"><span class="step-num">5</span><div class="step-txt"><b>Test edge cases</b> — empty, single element, all same, negative</div></div>
+    <div class="step"><span class="step-num">6</span><div class="step-txt"><b>State complexity</b> — always say time AND space at the end</div></div>
+    <div class="pattern-box" style="border-color:#d81b60;background:#fce4ec;font-size:0.82rem;color:#880e4f">
+      <b>"I'll start with a brute force O(n²) solution... and I can see that we can optimize this to O(n) using a hashmap because..."</b>
+    </div>
+  </div>
+</div>
+
+<div class="footer">📓 Made with ❤ by your Elite DSA Mentor · Drop any problem and let's crush it! 🚀</div>
+</div>

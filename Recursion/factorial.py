@@ -1,0 +1,10 @@
+def factorial(n):
+    assert n >= 0 and int(n) == n
+    if n in [0,1]:
+        return 1
+    else:
+        return  n* factorial(n-1)
+
+number = 4
+result = factorial(number)
+print(result)

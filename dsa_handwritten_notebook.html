@@ -1,0 +1,459 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.page{
+  font-family:'Caveat',cursive;
+  background:#fef9e7;
+  background-image:
+    repeating-linear-gradient(transparent, transparent 31px, #b8d4f0 31px, #b8d4f0 32px);
+  background-size:100% 32px;
+  position:relative;
+  padding:48px 52px 48px 88px;
+  border-radius:4px;
+  border:1px solid #ddd;
+  margin-bottom:0;
+}
+.page::before{
+  content:'';position:absolute;left:68px;top:0;bottom:0;width:1.5px;background:rgba(220,80,80,0.45);
+}
+.page::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:28px;
+  background:repeating-linear-gradient(90deg,#e0e0e0 0,#e0e0e0 1px,#f5f5f5 1px,#f5f5f5 14px);
+  border-right:1px solid #ccc;
+}
+.hole{position:absolute;left:10px;width:8px;height:8px;background:#fef9e7;border:1px solid #bbb;border-radius:50%}
+.ink-blue{color:#1a237e;font-family:'Caveat',cursive}
+.ink-red{color:#c62828;font-family:'Caveat',cursive}
+.ink-green{color:#1b5e20;font-family:'Caveat',cursive}
+.ink-pencil{color:#555;font-family:'Caveat',cursive}
+.ink-purple{color:#4527a0;font-family:'Caveat',cursive}
+h1.title{font-size:2rem;font-weight:700;color:#1a237e;line-height:1.6;margin-bottom:2px}
+h2.sec{font-size:1.45rem;font-weight:700;color:#1a237e;margin-top:6px;margin-bottom:2px;line-height:2}
+h3.sub{font-size:1.15rem;font-weight:600;color:#1a237e;line-height:2}
+.line{font-size:1.1rem;line-height:2;display:block;color:#1a237e}
+.note{font-size:0.95rem;line-height:2;display:block;color:#555}
+.red{color:#c62828}
+.green{color:#1b5e20}
+.purple{color:#4527a0}
+.strike{text-decoration:line-through;color:#999}
+.ul-red{border-bottom:2px solid #c62828;display:inline}
+.ul-blue{border-bottom:2px wavy #1a237e;display:inline}
+.circle{border:2px solid #c62828;border-radius:50px;display:inline;padding:0 6px}
+.box{border:2px solid #1a237e;border-radius:3px;display:inline-block;padding:1px 6px;transform:rotate(-0.5deg)}
+.box-red{border:2px solid #c62828;border-radius:3px;display:inline-block;padding:1px 6px;transform:rotate(0.5deg)}
+.arrow{color:#c62828;font-weight:700;font-size:1.2rem}
+.margin-note{position:absolute;left:4px;width:58px;font-size:0.75rem;line-height:1.3;color:#c62828;font-family:'Caveat',cursive;font-weight:700;transform:rotate(-1deg)}
+.star{color:#e65100;font-size:1.1rem}
+.indent{padding-left:24px}
+.double-indent{padding-left:44px}
+.row{display:flex;align-items:flex-start;gap:8px;line-height:2}
+.bullet{color:#c62828;font-size:1rem;flex-shrink:0;line-height:2}
+.code-line{font-family:'Patrick Hand',cursive;font-size:0.88rem;color:#1b5e20;line-height:1.9;display:block;padding-left:8px}
+.code-box{background:rgba(200,230,200,0.25);border-left:3px solid #1b5e20;margin:4px 0 4px 0;padding:2px 8px;border-radius:0 3px 3px 0}
+.highlight{background:rgba(255,235,59,0.5);padding:0 2px}
+.tag{background:rgba(197,202,233,0.5);border:1px solid #5c6bc0;border-radius:3px;font-size:0.85rem;padding:0 5px;color:#283593}
+.sep{border:none;border-top:1.5px dashed #bbb;margin:6px 0}
+.tab8{margin-left:16px}
+.slant{display:inline-block;transform:rotate(-1.5deg)}
+</style>
+<div class="page">
+  <h2 class="sr-only">DSA Pro Cheat Sheet in handwritten notebook style covering all major patterns and templates</h2>
+  <div class="hole" style="top:60px"></div>
+  <div class="hole" style="top:200px"></div>
+  <div class="hole" style="top:340px"></div>
+  <div class="hole" style="top:480px"></div>
+  <div class="hole" style="top:620px"></div>
+  <div class="hole" style="top:760px"></div>
+  <div class="hole" style="top:900px"></div>
+  <div class="hole" style="top:1040px"></div>
+  <div class="hole" style="top:1180px"></div>
+  <div class="hole" style="top:1320px"></div>
+  <div class="hole" style="top:1460px"></div>
+  <div class="hole" style="top:1600px"></div>
+  <div class="hole" style="top:1740px"></div>
+  <div class="hole" style="top:1880px"></div>
+  <div class="hole" style="top:2020px"></div>
+  <div class="hole" style="top:2160px"></div>
+  <div class="hole" style="top:2300px"></div>
+  <div class="hole" style="top:2440px"></div>
+  <div class="hole" style="top:2580px"></div>
+  <div class="hole" style="top:2720px"></div>
+  <div class="hole" style="top:2860px"></div>
+  <div class="hole" style="top:3000px"></div>
+  <div class="hole" style="top:3140px"></div>
+  <div class="hole" style="top:3280px"></div>
+  <div class="hole" style="top:3420px"></div>
+  <div class="hole" style="top:3560px"></div>
+
+  <h1 class="title" style="display:inline-block;transform:rotate(-0.5deg)">DSA Master Cheat Sheet</h1>
+  <span class="line" style="font-size:0.95rem;color:#888;margin-bottom:4px">— Interview Edition — All Patterns + Templates + Tricks</span>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:112px">MUST<br>READ!</span>
+  <h2 class="sec">1. Sliding Window <span class="tag">Array / String</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> <span class="red">subarray / substring</span> + some condition on elements</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">contiguous, max/min subarray, longest substring</span></span></div>
+
+  <span class="line" style="margin-top:2px"><span class="box">Fixed Window</span> — window size = k given</span>
+  <div class="indent">
+    <div class="row"><span class="bullet">1.</span><span class="line">Build first window (i = 0 to k-1)</span></div>
+    <div class="row"><span class="bullet">2.</span><span class="line">Slide: <span class="green">add arr[right]</span>, <span class="red">remove arr[left]</span>, advance both</span></div>
+    <div class="row"><span class="bullet">3.</span><span class="line">Track best at each step</span></div>
+  </div>
+  <span class="line" style="margin-top:2px"><span class="box">Variable Window</span> — shrink when condition breaks</span>
+  <div class="indent">
+    <div class="row"><span class="bullet">1.</span><span class="line">Expand right freely</span></div>
+    <div class="row"><span class="bullet">2.</span><span class="line">Shrink left until valid again</span></div>
+    <div class="row"><span class="bullet">3.</span><span class="line">Update answer on every valid window</span></div>
+  </div>
+  <div class="code-box">
+    <span class="code-line">left = 0</span>
+    <span class="code-line">for right in range(n):</span>
+    <span class="code-line" style="padding-left:24px">window.add(arr[right])          # expand</span>
+    <span class="code-line" style="padding-left:24px">while window_invalid():</span>
+    <span class="code-line" style="padding-left:40px">window.remove(arr[left]); left++ # shrink</span>
+    <span class="code-line" style="padding-left:24px">ans = max(ans, right - left + 1) # update</span>
+  </div>
+  <div class="row"><span class="star">⚠</span><span class="note"><span class="red">Mistake:</span> incrementing left more than once per step in variable window!</span></div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Time: O(n)</span> &nbsp; Space: O(1) or O(k)</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:440px">sorted<br>only!</span>
+  <h2 class="sec">2. Two Pointer <span class="tag">Array</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> sorted array + <span class="red">pair / triplet condition</span>, palindrome</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">two sum sorted, 3sum, remove dups, container water</span></span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div style="border:1.5px solid #1a237e;border-radius:3px;padding:6px 8px;transform:rotate(-0.3deg)">
+      <span class="line" style="font-size:1rem;font-weight:700">Opposite Ends</span>
+      <span class="note">l=0, r=n-1 → move inward</span>
+      <span class="note">sum &lt; target → l++</span>
+      <span class="note">sum &gt; target → r--</span>
+    </div>
+    <div style="border:1.5px solid #c62828;border-radius:3px;padding:6px 8px;transform:rotate(0.3deg)">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#c62828">Same Direction</span>
+      <span class="note">slow writes, fast reads</span>
+      <span class="note">fast skips, slow places</span>
+      <span class="note">used in: remove dups, merge</span>
+    </div>
+  </div>
+  <div class="code-box">
+    <span class="code-line">l, r = 0, n-1</span>
+    <span class="code-line">while l &lt; r:</span>
+    <span class="code-line" style="padding-left:24px">s = arr[l] + arr[r]</span>
+    <span class="code-line" style="padding-left:24px">if s == target: return [l, r]</span>
+    <span class="code-line" style="padding-left:24px">elif s &lt; target: l++   # need bigger</span>
+    <span class="code-line" style="padding-left:24px">else:            r--   # need smaller</span>
+  </div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Time: O(n)</span> &nbsp; Space: O(1)</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:756px">search<br>space!</span>
+  <h2 class="sec">3. Binary Search <span class="tag">Sorted / Monotonic</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> sorted data <span class="red">OR</span> "if X works then X+1 also works"</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">find min/max, first/last position, feasibility check</span></span></div>
+  <span class="line" style="margin-top:2px"><span class="box-red">Classic</span> → find target in sorted array</span>
+  <span class="line"><span class="box-red">On Answer</span> → "find minimum X such that f(X) = True"</span>
+  <div class="code-box">
+    <span class="code-line">lo, hi = 0, n-1</span>
+    <span class="code-line">while lo &lt; hi:</span>
+    <span class="code-line" style="padding-left:24px">mid = lo + (hi - lo) // 2   <span style="color:#c62828">← no overflow!</span></span>
+    <span class="code-line" style="padding-left:24px">if feasible(mid):  hi = mid   # search left</span>
+    <span class="code-line" style="padding-left:24px">else:             lo = mid+1  # search right</span>
+    <span class="code-line">return lo                     # answer!</span>
+  </div>
+  <div class="row"><span class="star">⚠</span><span class="note"><span class="red">NEVER</span> write <span style="font-family:'Patrick Hand',cursive;color:#c62828">(lo+hi)//2</span> — causes integer overflow in C++!</span></div>
+  <div class="row"><span class="star">⚠</span><span class="note">Decide boundary: <span class="red">hi = mid</span> vs <span class="red">hi = mid-1</span> based on if mid is a valid candidate</span></div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Time: O(log n)</span> &nbsp; Space: O(1)</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:1060px">init =<br>{0:1}!</span>
+  <h2 class="sec">4. Prefix Sum + HashMap <span class="tag">Array</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> <span class="red">subarray sum = k</span>, range queries, frequency</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">sum equals k, count subarrays, range sum</span></span></div>
+  <div class="code-box">
+    <span class="code-line"># Prefix sum build</span>
+    <span class="code-line">pre[0] = 0</span>
+    <span class="code-line">for i in range(n): pre[i+1] = pre[i] + arr[i]</span>
+    <span class="code-line">sum(i, j) = pre[j+1] - pre[i]  ← O(1) query!</span>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># Subarray sum = k (HashMap trick)</span>
+    <span class="code-line">seen = {0: 1}   ← CRITICAL: empty subarray</span>
+    <span class="code-line">total = count = 0</span>
+    <span class="code-line">for x in arr:</span>
+    <span class="code-line" style="padding-left:24px">total += x</span>
+    <span class="code-line" style="padding-left:24px">count += seen.get(total - k, 0)</span>
+    <span class="code-line" style="padding-left:24px">seen[total] = seen.get(total, 0) + 1</span>
+  </div>
+  <div class="row"><span class="star">⚠</span><span class="note"><span class="red">Always initialize</span> seen = {0: 1} or you miss subarrays starting at index 0</span></div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Time: O(n)</span> &nbsp; Space: O(n)</span></div>
+  <div class="sep"></div>
+
+  <h2 class="sec">5. Linked List Tricks <span class="tag">Pointer</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">Golden rule:</span> <span class="circle">Always use a dummy node</span> — saves null edge cases!</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div style="border:1.5px dashed #1a237e;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700">Fast + Slow (Floyd)</span>
+      <span class="note">slow=1 step, fast=2 steps</span>
+      <span class="note red">They meet → cycle exists</span>
+      <span class="note">slow at mid when fast=end</span>
+    </div>
+    <div style="border:1.5px dashed #c62828;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#c62828">Reverse In-Place</span>
+      <span class="note">prev=None, cur=head</span>
+      <span class="note">save next, point back, advance</span>
+      <span class="note green">O(n) time, O(1) space</span>
+    </div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># Reverse linked list</span>
+    <span class="code-line">prev, cur = None, head</span>
+    <span class="code-line">while cur:</span>
+    <span class="code-line" style="padding-left:24px">nxt = cur.next    # save next</span>
+    <span class="code-line" style="padding-left:24px">cur.next = prev   # reverse!</span>
+    <span class="code-line" style="padding-left:24px">prev = cur; cur = nxt</span>
+    <span class="code-line">return prev</span>
+  </div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:1636px">store<br>INDEX!</span>
+  <h2 class="sec">6. Monotonic Stack <span class="tag">Stack</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> next/prev <span class="red">greater / smaller</span> element problems</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">daily temps, stock span, largest histogram, trap water</span></span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div style="border:1.5px solid #1a237e;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700">Increasing Stack</span>
+      <span class="note">Pop when cur &lt; top</span>
+      <span class="note red">→ Next Smaller Element</span>
+    </div>
+    <div style="border:1.5px solid #c62828;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#c62828">Decreasing Stack</span>
+      <span class="note">Pop when cur &gt; top</span>
+      <span class="note red">→ Next Greater Element</span>
+    </div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># Next Greater Element</span>
+    <span class="code-line">st, res = [], [-1] * n</span>
+    <span class="code-line">for i, v in enumerate(arr):</span>
+    <span class="code-line" style="padding-left:24px">while st and arr[st[-1]] &lt; v:</span>
+    <span class="code-line" style="padding-left:40px">res[st.pop()] = v   # found NGE!</span>
+    <span class="code-line" style="padding-left:24px">st.append(i)        # push INDEX not value</span>
+  </div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Time: O(n)</span> — each element pushed+popped once. Space: O(n)</span></div>
+  <div class="sep"></div>
+
+  <h2 class="sec">7. Trees: DFS + BFS <span class="tag">Tree</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div style="border:1.5px solid #1b5e20;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#1b5e20">BFS (Level Order)</span>
+      <span class="note">Use deque queue</span>
+      <span class="note">Shortest path (unweighted)</span>
+      <span class="note red">Process entire level at once</span>
+    </div>
+    <div style="border:1.5px solid #4527a0;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#4527a0">DFS (Recursion)</span>
+      <span class="note">Pre / In / Post order</span>
+      <span class="note">Path sum, subtree, height</span>
+      <span class="note red">Base case = None → 0</span>
+    </div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># BFS level order</span>
+    <span class="code-line">q = deque([root])</span>
+    <span class="code-line">while q:</span>
+    <span class="code-line" style="padding-left:24px">for _ in range(len(q)):  # whole level</span>
+    <span class="code-line" style="padding-left:40px">node = q.popleft()</span>
+    <span class="code-line" style="padding-left:40px">if node.left:  q.append(node.left)</span>
+    <span class="code-line" style="padding-left:40px">if node.right: q.append(node.right)</span>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># DFS height / depth</span>
+    <span class="code-line">def dfs(node):</span>
+    <span class="code-line" style="padding-left:24px">if not node: return 0</span>
+    <span class="code-line" style="padding-left:24px">return 1 + max(dfs(node.left), dfs(node.right))</span>
+  </div>
+  <div class="row"><span class="star">★</span><span class="note"><span class="red">BFS = shortest path.</span> DFS = all paths / exhaustive. Remember this!</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:2120px">always<br>visited!</span>
+  <h2 class="sec">8. Graphs <span class="tag">Graph</span></h2>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">islands, connected components, cycle, shortest path, dependencies</span></span></div>
+  <div class="row"><span class="bullet">★</span><span class="line">Algorithm picker:</span></div>
+  <div class="indent">
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Shortest path unweighted</span> <span class="arrow">→</span> BFS</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Shortest path weighted (+ve)</span> <span class="arrow">→</span> Dijkstra O(E log V)</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Negative weights</span> <span class="arrow">→</span> Bellman-Ford O(VE)</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Task order / dependencies</span> <span class="arrow">→</span> Topological Sort</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Connected components</span> <span class="arrow">→</span> Union Find</span></div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># DFS on grid (Number of Islands)</span>
+    <span class="code-line">def dfs(r, c):</span>
+    <span class="code-line" style="padding-left:24px">if r &lt; 0 or r >= R or c &lt; 0 or c >= C: return</span>
+    <span class="code-line" style="padding-left:24px">if grid[r][c] != '1': return</span>
+    <span class="code-line" style="padding-left:24px">grid[r][c] = '#'   # mark visited</span>
+    <span class="code-line" style="padding-left:24px">for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)]:</span>
+    <span class="code-line" style="padding-left:40px">dfs(r+dr, c+dc)</span>
+  </div>
+  <div class="row"><span class="star">⚠</span><span class="note"><span class="red">Always mark visited BEFORE pushing to queue</span> — else duplicate visits!</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:2556px">5 steps!</span>
+  <h2 class="sec">9. Dynamic Programming <span class="tag">DP</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> <span class="red">optimal substructure</span> + <span class="red">overlapping subproblems</span></span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">max/min ways, count paths, knapsack, subsequence, partition</span></span></div>
+  <span class="line" style="margin-top:2px;font-weight:700"><span class="circle" style="border-color:#1a237e">5-Step DP Framework</span></span>
+  <div class="indent">
+    <div class="row"><span class="bullet" style="color:#1a237e">1.</span><span class="line"><span class="red">Define</span> — dp[i] = "max/min/count of ... up to index i"</span></div>
+    <div class="row"><span class="bullet" style="color:#1a237e">2.</span><span class="line"><span class="red">Base case</span> — dp[0] = ? (smallest input)</span></div>
+    <div class="row"><span class="bullet" style="color:#1a237e">3.</span><span class="line"><span class="red">Recurrence</span> — dp[i] = f(dp[i-1], dp[i-2], ...)</span></div>
+    <div class="row"><span class="bullet" style="color:#1a237e">4.</span><span class="line"><span class="red">Order</span> — fill left to right (usually)</span></div>
+    <div class="row"><span class="bullet" style="color:#1a237e">5.</span><span class="line"><span class="red">Answer</span> — dp[n] or max/min of dp[]</span></div>
+  </div>
+  <span class="line" style="margin-top:4px">DP Types:</span>
+  <div class="indent">
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">1D:</span> dp[i] — house robber, climbing stairs, LIS</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">2D:</span> dp[i][j] — LCS, edit distance, grid paths</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Knapsack:</span> dp[i][w] — 0/1, unbounded, subset sum</span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="red">Interval:</span> dp[l][r] — matrix chain, burst balloons</span></div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># LCS (Longest Common Subsequence)</span>
+    <span class="code-line">dp = [[0]*(m+1) for _ in range(n+1)]</span>
+    <span class="code-line">for i in range(1, n+1):</span>
+    <span class="code-line" style="padding-left:24px">for j in range(1, m+1):</span>
+    <span class="code-line" style="padding-left:40px">if s1[i-1] == s2[j-1]:</span>
+    <span class="code-line" style="padding-left:56px">dp[i][j] = dp[i-1][j-1] + 1</span>
+    <span class="code-line" style="padding-left:40px">else:</span>
+    <span class="code-line" style="padding-left:56px">dp[i][j] = max(dp[i-1][j], dp[i][j-1])</span>
+  </div>
+  <div class="row"><span class="star">★</span><span class="note">Space optimize: if only using prev row, compress 2D → 1D!</span></div>
+  <div class="sep"></div>
+
+  <span class="margin-note" style="top:3042px">-val in<br>Python!</span>
+  <h2 class="sec">10. Heap + Greedy <span class="tag">Heap</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line">Heap: when you need <span class="red">repeated min/max</span> efficiently</span></div>
+  <div class="row"><span class="bullet">★</span><span class="line">Greedy: when <span class="red">local optimal = global optimal</span> (must prove!)</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div style="border:1.5px solid #1b5e20;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#1b5e20">Min Heap (default)</span>
+      <span class="note">heapq.heappush(h, val)</span>
+      <span class="note">heapq.heappop(h)</span>
+      <span class="note">→ Top-K smallest</span>
+    </div>
+    <div style="border:1.5px solid #c62828;border-radius:3px;padding:5px 8px">
+      <span class="line" style="font-size:1rem;font-weight:700;color:#c62828">Max Heap (Python)</span>
+      <span class="note">heappush(h, -val)</span>
+      <span class="note">-heappop(h)</span>
+      <span class="note">→ Top-K largest</span>
+    </div>
+  </div>
+  <div class="code-box">
+    <span class="code-line"># K largest using min-heap of size k</span>
+    <span class="code-line">import heapq; heap = []</span>
+    <span class="code-line">for x in nums:</span>
+    <span class="code-line" style="padding-left:24px">heapq.heappush(heap, x)</span>
+    <span class="code-line" style="padding-left:24px">if len(heap) > k: heapq.heappop(heap)</span>
+    <span class="code-line">return heap[0]  # kth largest!</span>
+  </div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="green">Heap ops: O(log n)</span> &nbsp; Top-K: O(n log k) &nbsp; Build heap: O(n)</span></div>
+  <div class="sep"></div>
+
+  <h2 class="sec">11. Backtracking <span class="tag">Recursion</span></h2>
+  <div class="row"><span class="bullet">★</span><span class="line"><span class="ul-red">When to use:</span> find <span class="red">ALL solutions</span>, permutations, combinations, sudoku</span></div>
+  <div class="row"><span class="bullet">→</span><span class="line">Keywords: <span class="highlight">all subsets, all paths, N-Queens, word search, generate</span></span></div>
+  <span class="line" style="margin-top:4px;font-weight:700"><span class="circle">Universal Template</span></span>
+  <div class="code-box">
+    <span class="code-line">def backtrack(path, choices):</span>
+    <span class="code-line" style="padding-left:24px">if is_solution(path):          # base case</span>
+    <span class="code-line" style="padding-left:40px">result.append(path.copy()); return</span>
+    <span class="code-line" style="padding-left:24px">for choice in choices:</span>
+    <span class="code-line" style="padding-left:40px">if is_valid(choice):</span>
+    <span class="code-line" style="padding-left:56px">path.append(choice)       # MAKE choice</span>
+    <span class="code-line" style="padding-left:56px">backtrack(path, next_choices)</span>
+    <span class="code-line" style="padding-left:56px">path.pop()                # UNDO choice ←KEY</span>
+  </div>
+  <div class="row"><span class="star">⚠</span><span class="note"><span class="red">The undo step is everything.</span> Without it, state bleeds between branches!</span></div>
+  <div class="row"><span class="star">★</span><span class="note">3 questions: What is my choice? What is my base case? What do I undo?</span></div>
+  <div class="row"><span class="bullet">⏱</span><span class="note"><span class="red">Time: O(n! or 2ⁿ)</span> — expensive but necessary for exhaustive search</span></div>
+  <div class="sep"></div>
+
+  <h2 class="sec">12. Trie + Union Find <span class="tag">Advanced</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0">
+    <div>
+      <span class="line" style="font-size:1.05rem;font-weight:700">Trie (Prefix Tree)</span>
+      <div class="code-box" style="margin-top:2px">
+        <span class="code-line">class TrieNode:</span>
+        <span class="code-line" style="padding-left:16px">def __init__(self):</span>
+        <span class="code-line" style="padding-left:24px">self.kids = {}</span>
+        <span class="code-line" style="padding-left:24px">self.end = False</span>
+        <span class="code-line" style="color:#777"># insert: O(L), search: O(L)</span>
+      </div>
+      <div class="row"><span class="bullet">→</span><span class="note">Use: autocomplete, word search, prefix match</span></div>
+    </div>
+    <div>
+      <span class="line" style="font-size:1.05rem;font-weight:700">Union Find (DSU)</span>
+      <div class="code-box" style="margin-top:2px">
+        <span class="code-line">par = list(range(n))</span>
+        <span class="code-line">def find(x):</span>
+        <span class="code-line" style="padding-left:16px">if par[x]!=x: par[x]=find(par[x])</span>
+        <span class="code-line" style="padding-left:16px">return par[x]</span>
+        <span class="code-line">def union(a,b): par[find(a)]=find(b)</span>
+      </div>
+      <div class="row"><span class="bullet">→</span><span class="note">Use: connected components, MST, cycle</span></div>
+    </div>
+  </div>
+  <div class="sep"></div>
+
+  <h2 class="sec" style="color:#c62828">★ Pattern Recognition Master Table</h2>
+  <div style="border:2px solid #c62828;border-radius:4px;padding:8px 10px;transform:rotate(-0.2deg)">
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">subarray / window</span> <span class="arrow">→→</span> <span class="red">Sliding Window</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">sorted + pair condition</span> <span class="arrow">→→</span> <span class="red">Two Pointer</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">find min/max that satisfies</span> <span class="arrow">→→</span> <span class="red">Binary Search on Answer</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">subarray sum = k</span> <span class="arrow">→→</span> <span class="red">Prefix Sum + HashMap</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">next greater / smaller</span> <span class="arrow">→→</span> <span class="red">Monotonic Stack</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">shortest path unweighted</span> <span class="arrow">→→</span> <span class="red">BFS</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">ALL combinations / paths</span> <span class="arrow">→→</span> <span class="red">Backtracking</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">optimal + overlapping</span> <span class="arrow">→→</span> <span class="red">Dynamic Programming</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">top K / median stream</span> <span class="arrow">→→</span> <span class="red">Heap</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">connected components / group</span> <span class="arrow">→→</span> <span class="red">Union Find</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">prefix / autocomplete</span> <span class="arrow">→→</span> <span class="red">Trie</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line"><span class="highlight">task order / course prereq</span> <span class="arrow">→→</span> <span class="red">Topological Sort</span></span></div>
+  </div>
+  <div class="sep"></div>
+
+  <h2 class="sec" style="color:#4527a0">★ Complexity Cheatsheet</h2>
+  <div class="row"><span class="bullet">⚡</span><span class="line">Order: <span class="green">O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n)</span> &lt; <span class="red">O(n²) &lt; O(2ⁿ) &lt; O(n!)</span></span></div>
+  <div class="indent" style="margin-top:2px">
+    <div class="row"><span class="bullet">→</span><span class="line">HashMap get/set: <span class="green">O(1)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Binary search: <span class="green">O(log n)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Sliding window / two pointer: <span class="green">O(n)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Heap push/pop: <span class="green">O(log n)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Sorting: <span class="green">O(n log n)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Nested loops: <span class="red">O(n²)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Backtracking subsets: <span class="red">O(2ⁿ)</span></span></div>
+    <div class="row"><span class="bullet">→</span><span class="line">Backtracking perms: <span class="red">O(n!)</span></span></div>
+  </div>
+  <div class="sep"></div>
+
+  <h2 class="sec" style="color:#1b5e20">★ Interview Mindset — Always Follow This!</h2>
+  <div class="row"><span class="bullet" style="color:#1b5e20">1.</span><span class="line"><span class="ul-red">Clarify</span> — constraints? edge cases? return format?</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">2.</span><span class="line"><span class="ul-red">Brute force</span> — say it out loud first, then optimize</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">3.</span><span class="line"><span class="ul-red">Think aloud</span> — never go silent! narrate your thinking</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">4.</span><span class="line"><span class="ul-red">Dry run</span> — trace through example before coding</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">5.</span><span class="line"><span class="ul-red">Code clean</span> — meaningful variable names, no magic numbers</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">6.</span><span class="line"><span class="ul-red">Test edges</span> — empty input, single element, all same, negatives</span></div>
+  <div class="row"><span class="bullet" style="color:#1b5e20">7.</span><span class="line"><span class="ul-red">State complexity</span> — always give time AND space at the end</span></div>
+
+  <div style="margin-top:16px;border:2px solid #1b5e20;border-radius:4px;padding:8px 10px;transform:rotate(0.3deg);background:rgba(200,230,200,0.15)">
+    <span class="line" style="font-size:1.05rem;color:#1b5e20;font-weight:700">"I'll start with brute force O(n²)... I notice we can optimize</span>
+    <span class="line" style="font-size:1.05rem;color:#1b5e20;font-weight:700">using a hashmap because we're doing repeated lookups..."</span>
+    <span class="note" style="color:#555;margin-top:2px">← This is exactly what FAANG interviewers want to hear!</span>
+  </div>
+
+  <div style="margin-top:24px;text-align:center;font-size:0.9rem;color:#888;font-family:'Caveat',cursive">
+    — page 1 of 1 — drop any problem to go deeper! —
+  </div>
+</div>

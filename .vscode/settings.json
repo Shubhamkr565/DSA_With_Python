@@ -1,0 +1,4 @@
+{
+  "python.REPL.enableREPLSmartSend": false,
+  "C_Cpp.autocomplete": "default"
+}
